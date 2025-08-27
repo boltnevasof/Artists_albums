@@ -25,13 +25,13 @@ source venv/bin/activate  # для macOS
 ```
 pip install -r requirements.txt
 ```
-## Миграции и суперпользователь
+### Миграции и суперпользователь
 ```
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
 ```
-# Запуск сервера
+### Запуск сервера
 ```
 python manage.py runserver
 ```
@@ -51,7 +51,7 @@ Song: name — песня
 Album: artist (FK), title, release_year, songs (M2M через AlbumTrack)
 AlbumTrack: album (FK), song (FK), track_number
 ```
-# Ограничения на уровне базы данных:
+## Ограничения на уровне базы данных:
 ```
 (album, song) — песня не может повторяться в одном альбоме
 
@@ -70,34 +70,34 @@ GET/PUT/PATCH/DELETE /api/tracks/{id}/ — операции с конкретн�
 ```
 ## Примеры запросов
 
-# Создать исполнителя:
+### Создать исполнителя:
 ```
 curl -X POST http://127.0.0.1:8000/api/artists/ \
   -H "Content-Type: application/json" \
   -d '{"name":"Massive Attack"}'
 ```
 
-# Создать песню:
+### Создать песню:
 ```
 curl -X POST http://127.0.0.1:8000/api/songs/ \
   -H "Content-Type: application/json" \
   -d '{"name":"Teardrop"}'
 ```
 
-# Создать альбом:
+### Создать альбом:
 ```
 curl -X POST http://127.0.0.1:8000/api/albums/ \
   -H "Content-Type: application/json" \
   -d '{"artist":1, "title":"Mezzanine", "release_year":1998}'
 ```
 
-# Добавить песню в альбом:
+### Добавить песню в альбом:
 ```
 curl -X POST http://127.0.0.1:8000/api/tracks/ \
   -H "Content-Type: application/json" \
   -d '{"album":1,"song":1,"track_number":2}'
 ```
-# Swagger / Postman
+### Swagger / Postman
 ```
 Swagger UI: /api/docs/
 
